@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { menuItems } from "../data/db";
 
-export const Menu = () => {
-
-    const [order, setOrder] = useState([]);
+export const Menu = ({order, setOrder}) => {
 
     const addItem = (item) => {
         const itemExist = order.find(elem => elem.id===item.id);
