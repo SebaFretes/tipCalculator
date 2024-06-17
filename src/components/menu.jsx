@@ -21,7 +21,7 @@ export const Menu = ({order, setOrder}) => {
     return (
         menuItems.map(item => (
             <div key={item.id}>
-                <button onClick={() => addItem(item)} className="border-2 border-slate-400 hover:bg-slate-200 w-full p-3 flex justify-between">
+                <button onClick={() => addItem(item)} className="border-2 border-slate-400 hover:bg-slate-600 w-full p-3 flex justify-between">
                     <h1>{item.name}</h1>
                     <p className="font-black">${item.price}</p>
                 </button>

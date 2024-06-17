@@ -40,8 +40,8 @@ const App = () => {
 
   return (
     <>
-      <div className="bg-slate-400 py-5">
-        <h1 className="text-center text-4xl font-black">Tip and Order Calculator</h1>
+      <div className="bg-gray-400 py-5">
+        <h1 className="text-center text-4xl font-black">Order and Tip Calculator</h1>
       </div>
 
       <main className="max-w-6xl mx-auto py-10 grid md:grid-cols-2">
@@ -50,7 +50,7 @@ const App = () => {
           <Menu order={order} setOrder={setOrder} />
         </div>
 
-        <div className='border border-dashed border-slate-300 p-5 mx-6 rounded-lg space-y-10'>
+        <div className='border p-5 mx-6 rounded-lg space-y-10'>
           <h2 className='font-black text-4xl'>Order</h2>
           <div className='space-y-3 mt-5'>
             {order.length === 0 ?
@@ -71,33 +71,38 @@ const App = () => {
           </div>
           {order.length > 0 && (
             <div>
-            <div className="space-y-3">
-              <div>
-                <TipForm setTip={setTip} tip={tip} />
-              </div>
               <div className="space-y-3">
-                <h3 className="font-black text-2xl">Total and Tip</h3>
-                <p>Total Order:
-                  <span className="font-bold"> ${totalBeforeTip()}</span>
-                </p>
-                <p>Tip:
-                  <span className="font-bold"> ${tipAmount()}</span>
-                </p>
-                <p>Total to pay:
-                  <span className="font-bold"> ${totalWTip()}</span>
-                </p>
+                <div>
+                  <TipForm setTip={setTip} tip={tip} />
+                </div>
+                <div className="space-y-3">
+                  <h3 className="font-black text-2xl">Total and Tip</h3>
+                  <p>Total Order:
+                    <span className="font-bold"> ${totalBeforeTip()}</span>
+                  </p>
+                  <p>Tip:
+                    <span className="font-bold"> ${tipAmount()}</span>
+                  </p>
+                  <p>Total to pay:
+                    <span className="font-bold"> ${totalWTip()}</span>
+                  </p>
+                </div>
+                <button
+                  className="w-full bg-slate-600 p-3 uppercase mt-10 font-bold cursor-pointer"
+                  onClick={sendOrder}>
+                  Send Order
+                </button>
               </div>
-              <button
-                className="w-full bg-slate-400 p-3 uppercase mt-10 font-bold cursor-pointer"
-                onClick={sendOrder}>
-                Send Order
-              </button>
             </div>
-          </div>
           )
-        } 
+          }
         </div>
       </main>
+      <footer className="pb-6">
+        <p className="text-center text-2xl font-black">
+          Made by <a href="https://github.com/SebaFretes/" target="_blank"><span className="text-gray-400">Sebastian Fretes</span></a>
+        </p>
+      </footer>
     </>
   )
 }
