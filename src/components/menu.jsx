@@ -1,6 +1,6 @@
 import { menuItems } from "../data/db";
 
-export const Menu = ({order, setOrder}) => {
+const Menu = ({order, setOrder}) => {
 
     const addItem = (item) => {
         const itemExist = order.find(elem => elem.id===item.id);
@@ -30,3 +30,5 @@ export const Menu = ({order, setOrder}) => {
         )
     )
 }
+
+export default Menu
