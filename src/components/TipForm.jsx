@@ -21,18 +21,18 @@ const tipOptions = [
     },
   ]
 
-export const TipForm = ({setTip}) => {
+export const TipForm = ({setTip, tip}) => {
 
   return (
     <div>
         <h3 className="font-black text-2xl">Tip</h3>
         <form>
-            {tipOptions.map(tip => (
-                <div key={tip.id} className="flex gap-2">
+            {tipOptions.map(elem => (
+                <div key={elem.id} className="flex gap-2">
                     <label>
-                        {tip.label}
+                        {elem.label}
                     </label>
-                    <input id={tip.id} type="radio" name="tip" value={tip.value} onChange={e => setTip(e.target.value)}></input>
+                    <input id={elem.id} type="radio" name="tip" value={elem.value} onChange={e => setTip(+e.target.value)} checked={elem.value === tip}></input>
                 </div>
             ))}
         </form>

@@ -5,7 +5,7 @@ import { TipForm } from "./components/TipForm";
 const App = () => {
 
   const [order, setOrder] = useState([]);
-  const [tip, setTip] = useState(0);
+  const [tip, setTip] = useState(null);
 
   const deleteOrder = (item) => {
     const orderItem = order.filter(elem => (elem.id !== item.id));
@@ -17,9 +17,19 @@ const App = () => {
     return totalOrder.toFixed(2);
   };
 
+  const tipAmount = () => {
+    const total = parseFloat(totalBeforeTip());
+    return (total * tip).toFixed(2);
+  };
+
   const totalWTip = () => {
     const total = parseFloat(totalBeforeTip());
     return (total + (total * tip)).toFixed(2);
+  };
+
+  const sendOrder = () => {
+    setOrder([]);
+    setTip(null);
   };
 
   return (
@@ -50,27 +60,36 @@ const App = () => {
                   </div>
                 ))
               )
+
             }
           </div>
           <div>
             <div className="space-y-3">
-              <h2 className="text-2l font-black">Tip and Total</h2>
-              <p>Total Order:
-                <span className="font-bold"> ${totalBeforeTip()}</span>
-              </p>
               <div>
-                <TipForm setTip = {setTip}/>
+                <TipForm setTip={setTip} tip={tip} />
               </div>
-              <p>Total to pay:
-
-                <span className="font-bold"> ${totalWTip()}</span>
-              </p>
+              <div className="space-y-3">
+                <h3 className="font-black text-2xl">Total and Tip</h3>
+                <p>Total Order:
+                  <span className="font-bold"> ${totalBeforeTip()}</span>
+                </p>
+                <p>Tip:
+                  <span className="font-bold"> ${tipAmount()}</span>
+                </p>
+                <p>Total to pay:
+                  <span className="font-bold"> ${totalWTip()}</span>
+                </p>
+              </div>
+              <button
+                className="w-full bg-slate-400 p-3 uppercase mt-10 font-bold text-white disabled:opacity-30 cursor-pointer"
+                disabled={order.length === 0}
+                onClick={sendOrder}>
+                Send Order
+              </button>
             </div>
-            <button>Send Order</button>
           </div>
         </div>
       </main>
-
     </>
   )
 }
