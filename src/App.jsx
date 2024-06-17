@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu } from './components/Menu';
 import { TipForm } from "./components/TipForm";
+import Swal from 'sweetalert2';
 
 const App = () => {
 
@@ -28,6 +29,11 @@ const App = () => {
   };
 
   const sendOrder = () => {
+    Swal.fire({
+      title: 'Order sent',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
     setOrder([]);
     setTip(null);
   };
@@ -63,7 +69,8 @@ const App = () => {
 
             }
           </div>
-          <div>
+          {order.length > 0 && (
+            <div>
             <div className="space-y-3">
               <div>
                 <TipForm setTip={setTip} tip={tip} />
@@ -81,13 +88,14 @@ const App = () => {
                 </p>
               </div>
               <button
-                className="w-full bg-slate-400 p-3 uppercase mt-10 font-bold text-white disabled:opacity-30 cursor-pointer"
-                disabled={order.length === 0}
+                className="w-full bg-slate-400 p-3 uppercase mt-10 font-bold cursor-pointer"
                 onClick={sendOrder}>
                 Send Order
               </button>
             </div>
           </div>
+          )
+        } 
         </div>
       </main>
     </>
