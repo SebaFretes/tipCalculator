@@ -16,7 +16,7 @@ export const Menu = ({order, setOrder}) => {
         }
     }
 
-    console.log(order);
+    // console.log(order);
 
     return (
         menuItems.map(item => (
