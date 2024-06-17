@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Menu } from './components/menu';
+import { Menu } from './components/Menu';
+import { TipForm } from "./components/TipForm";
 
 const App = () => {
 
   const [order, setOrder] = useState([]);
+  const [tip, setTip] = useState(0);
 
   const deleteOrder = (item) => {
     const orderItem = order.filter(elem => (elem.id !== item.id));
@@ -13,7 +15,12 @@ const App = () => {
   const totalBeforeTip = () => {
     const totalOrder = order.reduce((total, item) => total + (item.quantity * item.price), 0);
     return totalOrder.toFixed(2);
-  }
+  };
+
+  const totalWTip = () => {
+    const total = parseFloat(totalBeforeTip());
+    return (total + (total * tip)).toFixed(2);
+  };
 
   return (
     <>
@@ -49,13 +56,14 @@ const App = () => {
             <div className="space-y-3">
               <h2 className="text-2l font-black">Tip and Total</h2>
               <p>Total Order:
-                <span className="font-bold"> {totalBeforeTip()}$</span>
+                <span className="font-bold"> ${totalBeforeTip()}</span>
               </p>
-              <p>Tip:
-                <span className="font-bold"> 0$</span>
-              </p>
+              <div>
+                <TipForm setTip = {setTip}/>
+              </div>
               <p>Total to pay:
-              <span className="font-bold"> {totalBeforeTip()}$</span>
+
+                <span className="font-bold"> ${totalWTip()}</span>
               </p>
             </div>
             <button>Send Order</button>
