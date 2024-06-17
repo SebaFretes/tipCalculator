@@ -21,7 +21,7 @@ const tipOptions = [
     },
   ]
 
-const TipForm = ({setTip, tip}) => {
+export const TipForm = ({setTip, tip}) => {
 
   return (
     <div>
@@ -39,5 +39,3 @@ const TipForm = ({setTip, tip}) => {
     </div>
   )
 }
-
-export default TipForm
