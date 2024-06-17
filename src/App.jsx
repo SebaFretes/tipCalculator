@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu } from "../src/components/Menu.jsx";
+import { Menu } from "../src/components/menu.jsx";
 import { TipForm } from "../src/components/TipForm.jsx";
 import Swal from 'sweetalert2';
 
