@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Menu from "./components/Menu.jsx";
-import TipForm from "./components/TipForm.jsx";
+import { Menu } from "./components/Menu.jsx";
+import { TipForm } from "./components/TipForm.jsx";
 import Swal from 'sweetalert2';
 
 const App = () => {
